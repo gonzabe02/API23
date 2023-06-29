@@ -69,15 +69,14 @@ class UsuariosController {
       if (isUserRegistered) {
 
         const user = await UsuariosService.getUserByEmail(email);
-
         const token = jwt.sign(user.toJSON(), process.env.PRIVATE_KEY, {
           expiresIn: "1d",
         });
-
         return res.status(200).json({
           status: 200,
           token,
-          message: "Token created successfully."
+          message: "Token created successfully.",
+          user: user._id
         });
 
       } else {

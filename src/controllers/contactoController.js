@@ -23,7 +23,7 @@ class contactoController {
   }
 
   async getContactById(req, res) {
-    try {
+    try { 
       const id = req.params.id;
       let contact = await contactoServicio.getContactById(id);
       if (!contact) {

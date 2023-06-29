@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const ContactosModel = require("../models/Contacto");
 
 class contactoServicio {
@@ -12,8 +13,8 @@ class contactoServicio {
   }
 
   async getContactById(id) {
-    try {
-      let contact = await ContactosModel.findOne({_id:id});
+    try { console.log(id);
+      let contact = await ContactosModel.findOne({_id:mongoose.Types.ObjectId(id)});
       return contact;
     } catch (err) {
       console.error(err);
